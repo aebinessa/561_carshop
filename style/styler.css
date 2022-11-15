@@ -110,6 +110,7 @@ a:hover, button:hover{
 
 .footer{
     background-color: #000;
+
 }
 
 .left-footer{
@@ -184,6 +185,103 @@ a:hover, button:hover{
     font-size: 14px;
 }
 
+/* Login */
+
+body{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.login-section  {
+    position: relative;
+
+}
+
+.login-left{
+    width: 50%;
+    float: left;
+    height: 80vh;
+    background: url(Assets/login-register.jpg);
+    background-size: cover;
+    background-position-x: center;
+   
+}
+
+.login-right{
+    width: 50%;
+    float: right;
+}
+
+.login-btn{
+    width: 100%;
+    margin: 20px 0px;
+}
+
+/* Register */
 
 
+.regsiter-section  {
+    position: relative;
+
+}
+
+.register-left{
+    width: 50%;
+    float: left;
+  
+   
+}
+
+.register-right{
+    width: 50%;
+    float: right;
+    height: 80vh;
+    background: url(Assets/login-register.jpg);
+    background-size: cover;
+    background-position-x: center;
+}
+
+/* Browse */
+
+#price{
+    color: #477EFE;
+    font-weight: bold;
+}
+
+.slider {
+    -webkit-appearance: none;  /* Override default CSS styles */
+    height: 8px;
+    background: #e2e2e2;
+    outline: none;
+    border-radius: 100px!important;
+    width: 220px;
+    margin-bottom: 20px;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Override default look */
+    appearance: none;
+    width: 20px; /* Set a specific slider handle width */
+    height: 20px; /* Slider handle height */
+    background: #477EFE; /* Green background */
+    cursor: pointer; /* Cursor on hover */
+    border-radius: 50%;
+  }
+
+  .filters input{
+    margin: 10px 0px;
+  }
+
+  .archive-card-body {
+    margin-top: 30px;
+    background-color: #000;
+    color: #fff;
+    height: 200px;
+    padding: 30px;
+}
+
+.archive-card-img{
+    float: right;
+}
 
