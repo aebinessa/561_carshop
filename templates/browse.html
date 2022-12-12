@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}Browse{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div style="position: absolute; top:250px;">
+            <input type="range" min="1000" max="100000" value="500" class="slider" id="myRange"><br>
+            <label for="" id="price"></label>
+            <div class="filters mt-5">
+                <h5>Filter By</h5>
+                <label for="all">ALL <input type="checkbox" class="brand-filter" checked value="0" onchange="filter()"/></label>
+                <br>
+                {% for brand in brands %}
+                    <label for="all">{{ brand.name }} <input type="checkbox" {% if selected_brand == brand.pk %}checked{% endif %} class="brand-filter" value="{{ brand.pk }}" onchange="filter()"/></label>
+                    <br>
+                {% endfor %}
+            </div>
+
+        </div>
+        {% for car in cars %}
+            <div class="row car" data-price="{{ car.price }}" data-brand="{{ car.brand.pk }}">
+                <div class="col-md-4 mt-5">
+                </div>
+
+                <div class="col-md-8">
+                    <div class="archive-card">
+                        <img src="{{ car.image.url }}" class="archive-card-img" alt="...">
+                        <div class="archive-card-body">
+                            <h5 class="archive-card-title">{{ car.name }} - ${{ car.price }}</h5>
+                            <p class="archive-card-text mt-3">{{ car.description|linebreaks }}</p>
+                            <a class="btn btn-primary mt-3" href="{% url 'car_detail' car.pk %}">Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% empty %}
+            no cars!!!
+        {% endfor %}
+    </div>
+{% endblock %}
