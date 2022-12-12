@@ -1,0 +1,73 @@
+from django.urls import path
+
+from .views import (
+    CarDetailView,
+    CarListView,
+    CartAddView,
+    CartRemoveView,
+    CartView,
+    CheckoutView,
+    HomePageView,
+    LoginView,
+    LogoutView,
+    OrderDetailView,
+    RegisterView,
+)
+
+urlpatterns = [
+    path(
+        "",
+        HomePageView.as_view(),
+        name="home",
+    ),
+    path(
+        "browse/",
+        CarListView.as_view(),
+        name="car_list",
+    ),
+    path(
+        "details/<int:pk>/",
+        CarDetailView.as_view(),
+        name="car_detail",
+    ),
+    path(
+        "register/",
+        RegisterView.as_view(),
+        name="register",
+    ),
+    path(
+        "login/",
+        LoginView.as_view(),
+        name="login",
+    ),
+    path(
+        "logout/",
+        LogoutView.as_view(),
+        name="logout",
+    ),
+    path(
+        "cart/",
+        CartView.as_view(),
+        name="cart",
+    ),
+    path(
+        "cart-add/",
+        CartAddView.as_view(),
+        name="cart_add",
+    ),
+    path(
+        "cart-remove/",
+        CartRemoveView.as_view(),
+        name="cart_remove",
+    ),
+    path(
+        "checkout/",
+        CheckoutView.as_view(),
+        name="checkout",
+    ),
+    path(
+        "order/<int:pk>/",
+        OrderDetailView.as_view(),
+        name="order_detail",
+    ),
+]
