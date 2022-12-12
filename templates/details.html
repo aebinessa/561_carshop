@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}Details{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="archive-card">
+                    <img src="{{ car.image.url }}" class="archive-card-img" alt="...">
+                    <div class="archive-card-body">
+                        <h5 class="archive-card-title">{{ car.name }} - ${{ car.price }}</h5>
+                        <p class="archive-card-text mt-3">{{ car.description|linebreaks }}</p>
+                        <form action="{% url 'cart_add' %}" method="post">
+                            {% csrf_token %}
+                            <input type="number" hidden name="car" value="{{ car.pk }}">
+                            <button class="btn mt-3" type="submit">Add to cart</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

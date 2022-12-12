@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Home{% endblock %}
+
+{% block body %}
+    <div class="hero">
+        <img src="{% static 'Assets/hero-background.jpg' %}" alt="">
+        <div class="main">
+            <h1 class="mb-4">Find your next car with a click</h1>
+            <p class="mb-4">You might be a scroll away from your dream car. Explore all of our vehicles while taking car
+                hunting to the next level. It couldn’t get any easier!</p>
+            <a href="{% url 'car_list' %}" class="btn btn-primary">Browse</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2 class="mt-5">Brands</h2>
+        <div class="ourbrands mt-5 mb-5">
+            {% for brand in brands %}
+                <a href="{% url 'car_list' %}?brand={{ brand.pk }}"><img src="{{ brand.image.url }}" alt=""></a>
+            {% empty %}
+                no brands
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="container">
+        <h2 class="mt-5 mb-5">Newcomers</h2>
+        <div class="row row-cols-1 row-cols-md-3 g-4 mb-5">
+            {% for car in cars %}
+                <div class="col">
+                    <div class="card">
+                        <img src="{{ car.image.url }}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ car.name }}</h5>
+                            <p class="card-text mt-3">{{ car.description|linebreaks }}</p>
+                            <a class="btn btn-primary mt-3" href="{% url 'car_detail' car.pk %}">Details</a>
+                        </div>
+                    </div>
+                </div>
+            {% empty %}
+                no cars
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

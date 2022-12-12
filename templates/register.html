@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+    <div class="register-section">
+        <div class="register-left  mt-5 p-3">
+            <div class="container p-5">
+                <h2>Register</h2>
+
+                <form class="register-form" method="post">
+                    {{ form.non_field_errors }}
+                    {% csrf_token %}
+                    <div class="form-group mt-3">
+                        <input type="text" name="first_name" class="form-control" id="exampleInputEmail1" aria-describedby="nameHelp"
+                               placeholder="First Name" value="{{ form.first_name.value|default:'' }}">
+                        {{ form.first_name.errors }}
+                    </div>
+                    <div class="form-group mt-3">
+                        <input type="text" name="last_name" class="form-control" id="exampleInputEmail1" aria-describedby="nameHelp"
+                               placeholder="Last Name" value="{{ form.last_name.value|default:'' }}">
+                        {{ form.last_name.errors }}
+                    </div>
+                    <div class="form-group mt-3">
+                        <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                               placeholder="Email" value="{{ form.email.value|default:'' }}">
+                        {{ form.email.errors }}
+                    </div>
+                    <div class="form-group mt-3">
+                        <input type="password" name="password1" class="form-control" id="exampleInputPassword1" placeholder="Password" value="{{ form.password1.value|default:'' }}">
+                        {{ form.password1.errors }}
+                    </div>
+                    <div class="form-group mt-3">
+                        <input type="password" name="password2" class="form-control" id="exampleInputPassword1"
+                               placeholder="Confirm Password" value="{{ form.password2.value|default:'' }}">
+                        {{ form.password2.errors }}
+                    </div>
+                    <div class="form-check mt-3">
+                        <input type="checkbox" class="form-check-input agree-checkbox" data-target="register-btn" id="exampleCheck1" required>
+                        <label class="form-check-label" for="exampleCheck1">I agree to privacy policy and terms and
+                            conditions.</label>
+                    </div>
+                    <button type="submit" disabled class="btn btn-primary login-btn" id="register-btn">Register</button>
+                </form>
+                <a href="{% url 'login' %}">Already a user? Login here.</a>
+            </div>
+        </div>
+
+        <div class="register-right">
+        </div>
+    </div>
+{% endblock %}
